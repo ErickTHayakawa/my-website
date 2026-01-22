@@ -11,7 +11,11 @@ interface Particle {
   opacity: number;
 }
 
-export default function ParticleBackground() {
+type ParticleBackgroundProps = {
+  color?: string;
+};
+
+export default function ParticleBackground({ color = '107, 255, 107' }: ParticleBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
 
@@ -79,7 +83,7 @@ export default function ParticleBackground() {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(107, 255, 107, ${particle.opacity})`;
+        ctx.fillStyle = `rgba(${color}, ${particle.opacity})`;
         ctx.fill();
       });
 
@@ -94,7 +98,7 @@ export default function ParticleBackground() {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(107, 255, 107, ${0.15 * (1 - distance / 150)})`;
+            ctx.strokeStyle = `rgba(${color}, ${0.15 * (1 - distance / 150)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -110,7 +114,7 @@ export default function ParticleBackground() {
       window.removeEventListener('resize', setCanvasSize);
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [color]);
 
   return (
     <canvas
