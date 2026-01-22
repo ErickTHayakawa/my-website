@@ -1,7 +1,7 @@
 export default function Projects() {
   return (
     <div
-      className="w-full h-full flex flex-col items-center justify-center p-8"
+      className="w-full h-full flex flex-col items-center justify-center p-8 pt-16"
       style={{
         backgroundColor: 'rgba(13, 19, 36, 0.7)',
         color: '#EAF2FF'
