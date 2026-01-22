@@ -1,65 +1,164 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+import TopBar from "./components/layout/TopBar";
+import HomeSection from "./components/sections/Home";
+import About from "./components/sections/About";
+import Projects from "./components/sections/Projects";
+import Experiences from "./components/sections/Experiences";
+import Contact from "./components/sections/Contact";
+
+const sections = [
+  { id: "home", component: HomeSection },
+  { id: "about", component: About },
+  { id: "projects", component: Projects },
+  { id: "experiences", component: Experiences },
+  { id: "contact", component: Contact },
+];
 
 export default function Home() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMenuClick = (sectionId: string) => {
+    const index = sections.findIndex((s) => s.id === sectionId);
+    if (index !== -1) {
+      setCurrentIndex(index);
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+    setStartX(e.touches[0].clientX);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+    setTranslateX(diff);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    const currentX = e.clientX;
+    const diff = currentX - startX;
+    setTranslateX(diff);
+  };
+
+  const handleDragEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+
+    const threshold = 100;
+    if (translateX > threshold && currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    } else if (translateX < -threshold && currentIndex < sections.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+    setTranslateX(0);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "ArrowLeft" && currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    } else if (e.key === "ArrowRight" && currentIndex < sections.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentIndex]);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="h-screen overflow-hidden font-sans" style={{ background: 'linear-gradient(180deg, #070A12 0%, #0D1324 100%)' }}>
+      <TopBar onMenuClick={handleMenuClick} activeSection={sections[currentIndex].id} />
+      
+      <div
+        ref={containerRef}
+        className="h-screen w-full cursor-grab active:cursor-grabbing"
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleDragEnd}
+        onMouseLeave={handleDragEnd}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleDragEnd}
+        style={{ touchAction: 'pan-y' }}
+      >
+        <div
+          className="flex h-full transition-transform duration-300 ease-out"
+          style={{
+            transform: `translateX(calc(-${currentIndex * 100}vw + ${translateX}px))`,
+            width: `${sections.length * 100}vw`,
+          }}
+        >
+          {sections.map((section, index) => {
+            const SectionComponent = section.component;
+            return (
+              <div
+                key={section.id}
+                className="w-screen h-full flex items-center justify-center p-8"
+                style={{ minWidth: '100vw' }}
+              >
+                <SectionComponent />
+              </div>
+            );
+          })}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
+
+      {/* Navigation Arrows */}
+      {currentIndex > 0 && (
+        <button
+          onClick={() => setCurrentIndex(currentIndex - 1)}
+          className="fixed left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-opacity-50 hover:bg-opacity-75 transition-all z-40"
+          style={{ backgroundColor: 'rgba(56, 189, 248, 0.3)' }}
+          aria-label="Previous section"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="#EAF2FF" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+      )}
+      
+      {currentIndex < sections.length - 1 && (
+        <button
+          onClick={() => setCurrentIndex(currentIndex + 1)}
+          className="fixed right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-opacity-50 hover:bg-opacity-75 transition-all z-40"
+          style={{ backgroundColor: 'rgba(56, 189, 248, 0.3)' }}
+          aria-label="Next section"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="#EAF2FF" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      )}
+
+      {/* Navigation Dots */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+        {sections.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentIndex(i)}
+            className="w-3 h-3 rounded-full transition-all"
+            style={{
+              backgroundColor: i === currentIndex ? '#38BDF8' : 'rgba(56, 189, 248, 0.3)',
+            }}
+            aria-label={`Go to section ${i + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
