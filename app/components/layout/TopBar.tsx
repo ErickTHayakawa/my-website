@@ -66,7 +66,7 @@ export default function TopBar({ onMenuClick, activeSection }: TopBarProps) {
                 }`}
                 style={{
                   backgroundImage: activeSection === "about" 
-                    ? 'linear-gradient(to top, #60a5fa33, transparent), linear-gradient(to top, #60a5fa, transparent), linear-gradient(to top, #60a5fa, transparent)'
+                    ? 'linear-gradient(to top, #ffeb3b33, transparent), linear-gradient(to top, #ffeb3b, transparent), linear-gradient(to top, #ffeb3b, transparent)'
                     : 'none',
                   backgroundSize: activeSection === "about" ? '100% 100%, 2px 100%, 2px 100%' : '0',
                   backgroundPosition: 'center bottom, left bottom, right bottom',
@@ -85,7 +85,7 @@ export default function TopBar({ onMenuClick, activeSection }: TopBarProps) {
                 }`}
                 style={{
                   backgroundImage: activeSection === "experiences" 
-                    ? 'linear-gradient(to top, #60a5fa33, transparent), linear-gradient(to top, #60a5fa, transparent), linear-gradient(to top, #60a5fa, transparent)'
+                    ? 'linear-gradient(to top, #ff1dce33, transparent), linear-gradient(to top, #ff1dce, transparent), linear-gradient(to top, #ff1dce, transparent)'
                     : 'none',
                   backgroundSize: activeSection === "experiences" ? '100% 100%, 2px 100%, 2px 100%' : '0',
                   backgroundPosition: 'center bottom, left bottom, right bottom',
@@ -104,7 +104,7 @@ export default function TopBar({ onMenuClick, activeSection }: TopBarProps) {
                 }`}
                 style={{
                   backgroundImage: activeSection === "projects" 
-                    ? 'linear-gradient(to top, #60a5fa33, transparent), linear-gradient(to top, #60a5fa, transparent), linear-gradient(to top, #60a5fa, transparent)'
+                    ? 'linear-gradient(to top, #a855f733, transparent), linear-gradient(to top, #a855f7, transparent), linear-gradient(to top, #a855f7, transparent)'
                     : 'none',
                   backgroundSize: activeSection === "projects" ? '100% 100%, 2px 100%, 2px 100%' : '0',
                   backgroundPosition: 'center bottom, left bottom, right bottom',
@@ -123,7 +123,7 @@ export default function TopBar({ onMenuClick, activeSection }: TopBarProps) {
                 }`}
                 style={{
                   backgroundImage: activeSection === "contact" 
-                    ? 'linear-gradient(to top, #60a5fa33, transparent), linear-gradient(to top, #60a5fa, transparent), linear-gradient(to top, #60a5fa, transparent)'
+                    ? 'linear-gradient(to top, #3b82f633, transparent), linear-gradient(to top, #3b82f6, transparent), linear-gradient(to top, #3b82f6, transparent)'
                     : 'none',
                   backgroundSize: activeSection === "contact" ? '100% 100%, 2px 100%, 2px 100%' : '0',
                   backgroundPosition: 'center bottom, left bottom, right bottom',
