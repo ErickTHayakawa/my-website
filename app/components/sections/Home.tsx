@@ -26,57 +26,41 @@ export default function Home({ onMenuClick }: HomeProps) {
       }}
     >
       <ParticleBackground />
-      {/* Top Section */}
-      <div className="w-full md:h-1/2 flex items-center justify-start p-4 md:p-12 lg:p-16 relative z-10">
-        <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-16">
+      {/* Top Section - Full Page */}
+      <div className="w-full flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-8 sm:py-12 md:py-16 lg:py-20 relative z-10 overflow-visible" style={{ minHeight: '75vh' }}>
+        <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 md:gap-12 lg:gap-20 xl:gap-32 overflow-visible max-w-7xl">
           {/* Image */}
-          <div className="flex-shrink-0 pt-4 md:pt-8 flex items-center justify-center">
-            <div className="relative">
-              <div className="rounded-full w-48 h-48 md:w-60 md:h-60 lg:w-70 lg:h-70 border-4 border-green-400 overflow-hidden flex items-center justify-center relative" style={{ backgroundColor: '#0d1324' }}>
+          <div className="flex-shrink-0 flex items-center justify-center overflow-visible">
+            <div className="relative overflow-visible w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-110 xl:h-110">
+              <div className="rounded-full w-full h-full border-4 border-green-400 absolute z-1" />
                 <Image
                   src={mainImage}
                   alt="Profile"
                   width={300}
                   height={300}
-                  className="w-full h-full object-cover absolute" 
-                  style={{ objectPosition: 'center 30%' }}
+                  className="w-full h-full object-contain absolute z-2" 
+                  style={{ objectPosition: 'center 30%'}}
                 />
-              </div>
-              {/* Small circle overlay */}
-              <div 
-                onClick={handleImageSwap}
-                className="absolute bottom-0 right-0 rounded-full w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 border-4 border-green-400 overflow-hidden flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110" 
-                style={{ backgroundColor: '#0d1324' }}
-              >
-                <Image
-                  src={smallImage}
-                  alt="Additional Photo"
-                  width={100}
-                  height={100}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <div className="rounded-full w-full h-full border-4 border-green-400 absolute z-3" style={{ clipPath: 'inset(0 0 50% 0)' }}/>
             </div>
           </div>
           
           {/* Text Content */}
-          <div className="flex-1 px-4 md:pr-8 pt-4 md:pt-8 text-center md:text-left">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4" style={{ color: '#EAF2FF' }}>
-              Welcome! I'm Erick Hayakawa
+          <div className="flex-1 px-4 sm:px-6 md:px-8 lg:px-12 text-center md:text-left max-w-3xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 lg:mb-8" style={{ color: '#EAF2FF' }}>
+              Welcome! I'm Erick Hayakawa!
             </h1>
-            <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6" style={{ color: '#6bff6b' }}>
+            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-4 sm:mb-6 md:mb-8 lg:mb-10" style={{ color: '#6bff6b' }}>
               Full Stack Developer
             </h3>
-            <p className="text-sm md:text-base lg:text-lg leading-relaxed mb-6 md:mb-8" style={{ color: '#EAF2FF' }}>
-              Nearly <span style={{ color: '#6bff6b' }}>5 years of experience</span> building <span style={{ color: '#6bff6b' }}>clean</span>, <span style={{ color: '#6bff6b' }}>maintainable</span> web applications—from development to delivery and support. 
-              <br />
-              I focus on delivering <span style={{ color: '#6bff6b' }}>real value</span> through new features, bug fixes, and <span style={{ color: '#6bff6b' }}>reliable solutions</span>. 
-              <br />
-              Always ready for <span style={{ color: '#6bff6b' }}>new challenges</span> and continuous growth.
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed mb-6 sm:mb-8 md:mb-10 lg:mb-12" style={{ color: '#EAF2FF' }}>
+              Building <span style={{ color: '#6bff6b' }}>clean</span>, <span style={{ color: '#6bff6b' }}>maintainable</span> web applications. From <span style={{ color: '#6bff6b' }}>Development</span> to <span style={{ color: '#6bff6b' }}>Deployment</span> and <span style={{ color: '#6bff6b' }}>Support</span>.
+              Focusing on delivering value through new <span style={{ color: '#6bff6b' }}>features</span>, <span style={{ color: '#6bff6b' }}>bug fixes</span>, and <span style={{ color: '#6bff6b' }}>reliable solutions</span>.
+              Always eager to learn and embrace <span style={{ color: '#6bff6b' }}>new challenges</span>!
             </p>
             <button
               onClick={() => onMenuClick?.("about")}
-              className="inline-block px-6 py-2 md:px-8 md:py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 group text-sm md:text-base"
+              className="inline-block px-6 py-2 sm:px-8 sm:py-3 md:px-10 md:py-4 lg:px-12 lg:py-5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 group text-sm sm:text-base md:text-lg lg:text-xl"
               style={{ 
                 border: '2px solid #6bff6b',
                 backgroundColor: 'transparent',
@@ -97,105 +81,112 @@ export default function Home({ onMenuClick }: HomeProps) {
         </div>
       </div>
 
-      {/* Bottom Section */}
-      <div className="w-full md:h-1/2 flex flex-col md:flex-row relative z-10">
-        {/* Bottom Left */}
+      {/* Gradient separator line */}
+      <div className="w-full flex items-center justify-center py-0 relative z-10">
         <div 
-          className="w-full md:w-1/2 h-auto md:h-full flex flex-col p-4 md:p-8 overflow-y-auto"
+          className="w-full h-1 max-w-7xl"
           style={{
-            backgroundImage: 'linear-gradient(to top, #6bff6b, transparent)',
-            backgroundSize: '2px 100%',
-            backgroundPosition: 'right center',
-            backgroundRepeat: 'no-repeat'
+            background: 'linear-gradient(to right, transparent, #6bff6b, transparent)',
           }}
-        >
-          <h2 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center" style={{ color: '#6bff6b' }}>Experiences</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:pr-4">
-            {/* Card 1 */}
-            <div 
-              className="p-3 rounded-lg border transition-all duration-300 hover:scale-105"
-              style={{
-                backgroundColor: 'rgba(107, 255, 107, 0.05)',
-                borderColor: '#6bff6b50'
-              }}
-            >
-              <h3 className="text-sm font-semibold" style={{ color: '#6bff6b' }}>IT Support Internship</h3>
-              <p className="text-xs font-medium mt-1" style={{ color: '#EAF2FF' }}>LogSmart</p>
-              <p className="text-xs mt-1" style={{ color: '#999' }}>02/2021 - 06/2021</p>
-              <p className="text-xs mt-2" style={{ color: '#EAF2FF' }}>
-                Working with a logistics WMS (Laravel + PHP), providing customer support, fixing bugs, and implementing small features.
-              </p>
-            </div>
+        />
+      </div>
 
-            {/* Card 2 */}
-            <div 
-              className="p-3 rounded-lg border transition-all duration-300 hover:scale-105"
-              style={{
-                backgroundColor: 'rgba(107, 255, 107, 0.05)',
-                borderColor: '#6bff6b50'
-              }}
-            >
-              <h3 className="text-sm font-semibold" style={{ color: '#6bff6b' }}>Full Stack Developer</h3>
-              <p className="text-xs font-medium mt-1" style={{ color: '#EAF2FF' }}>LogSmart</p>
-              <p className="text-xs mt-1" style={{ color: '#999' }}>06/2021 - 05/2022</p>
-              <p className="text-xs mt-2" style={{ color: '#EAF2FF' }}>
-                Built and maintained core logistics WMS system features using PHP + Laravel, supporting customer support and developers, and helping with code reviews and task scope definition.
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div 
-              className="p-3 rounded-lg border transition-all duration-300 hover:scale-105"
-              style={{
-                backgroundColor: 'rgba(107, 255, 107, 0.05)',
-                borderColor: '#6bff6b50'
-              }}
-            >
-              <h3 className="text-sm font-semibold" style={{ color: '#6bff6b' }}>Full Stack Developer</h3>
-              <p className="text-xs font-medium mt-1" style={{ color: '#EAF2FF' }}>Exago</p>
-              <p className="text-xs mt-1" style={{ color: '#999' }}>05/2022 - 05/2025</p>
-              <p className="text-xs mt-2" style={{ color: '#EAF2FF' }}>
-                Developed multiple web applications using React, Java, JavaScript, and TypeScript—delivering features, troubleshooting issues, reviewing code, and supporting the team with task distribution.
-              </p>
-            </div>
-
-            {/* Card 4 */}
-            <div 
-              className="p-3 rounded-lg border transition-all duration-300 hover:scale-105"
-              style={{
-                backgroundColor: 'rgba(107, 255, 107, 0.05)',
-                borderColor: '#6bff6b50'
-              }}
-            >
-              <h3 className="text-sm font-semibold" style={{ color: '#6bff6b' }}>Full Stack Developer</h3>
-              <p className="text-xs font-medium mt-1" style={{ color: '#EAF2FF' }}>Tata Consultancy Service</p>
-              <p className="text-xs mt-1" style={{ color: '#999' }}>05/2025 - Now</p>
-              <p className="text-xs mt-2" style={{ color: '#EAF2FF' }}>
-                Consultant in J&J Web Development team, building solutions with Next.js, Python, and AI workflows (Langflow/LangGraph)—focused on new features, bug fixing, testing, and code reviews.
-              </p>
-            </div>
+      {/* Experiences Section - Full Page */}
+      <div className="w-full flex flex-col items-center justify-center pr-6 pl-6 md:pr-16 md:pl-16 lg:pr-24 lg:pl-24 relative z-10">
+        {/* Main Stats */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-10 w-full max-w-8xl mt-8 md:mt-10 xl:mt-12">
+          <div className="flex items-center justify-center gap-2 md:gap-3">
+            <svg className="w-6 h-6 md:w-7 md:h-7 xl:w-10 xl:h-10" fill="#6bff6b" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zM7 12h5v5H7z"/>
+            </svg>
+            <p className="text-sm md:text-base xl:text-xl font-bold whitespace-nowrap"><span style={{ color: '#6bff6b' }}>5 years</span> <span style={{ color: '#EAF2FF' }}>Experience</span></p>
+          </div>
+          <div className="flex items-center justify-center gap-2 md:gap-3">
+            <svg className="w-6 h-6 md:w-7 md:h-7 xl:w-10 xl:h-10" fill="#6bff6b" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+            </svg>
+            <p className="text-sm md:text-base xl:text-xl font-bold whitespace-nowrap"><span style={{ color: '#6bff6b' }}>Computer Science</span> <span style={{ color: '#EAF2FF' }}>Degree</span></p>
+          </div>
+          <div className="flex items-center justify-center gap-2 md:gap-3">
+            <svg className="w-6 h-6 md:w-7 md:h-7 xl:w-10 xl:h-10" fill="#6bff6b" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>
+            </svg>
+            <p className="text-sm md:text-base xl:text-xl font-bold whitespace-nowrap" style={{ color: '#EAF2FF' }}>Next.js - Node.js - React - TypeScript</p>
           </div>
         </div>
 
-        {/* Bottom Right */}
-        <div className="w-full md:w-1/2 h-auto md:h-full flex flex-col p-4 md:p-8 overflow-y-auto">
-          <h2 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center" style={{ color: '#6bff6b' }}>Projects</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="flex items-center gap-4 md:gap-6 mb-8 md:mb-12 w-full max-w-4xl">
+          <div className="flex-1 h-1" style={{ background: 'linear-gradient(to right, transparent, #6bff6b)' }} />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center">Projects</h2>
+          <div className="flex-1 h-1" style={{ background: 'linear-gradient(to left, transparent, #6bff6b)' }} />
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 max-w-8xl w-full">
             <Card 
               title="Robotics Team (FRC)"
               company="Brazilian Storm"
               description="Designed and built competition robots for the FIRST Robotics Competition (FRC). Contributed to programming and marketing, including video editing, uniform design, robot fairing, and software development."
+              size="large"
+              images={[
+                "/Brazilian-Storm.jpg",
+                "/Brazilian-Storm-2.jpg",
+                "/Brazilian-Storm-3.jpg",
+                "/Brazilian-Storm-4.jpg"
+              ]}
             />
             
             <Card 
               title="Pokemon Card Collector"
               company="Personal Project"
               description="An in-progress web + mobile app to manage a Pokémon card collection anywhere. Main feature: scan a card and identify the correct card and set, even when different sets share the same illustration."
+              size="large"
+              images={[
+                "/pokemon-image.png",
+              ]}
+              finished={false}
             />
           </div>
+      </div>
+
+      {/* Gradient separator line */}
+      <div className="w-full flex items-center justify-center py-8 md:py-12 relative z-10">
+        <div 
+          className="w-full h-1 max-w-7xl"
+          style={{
+            background: 'linear-gradient(to right, transparent, #6bff6b, transparent)',
+          }}
+        />
+      </div>
+
+      {/* Let's Talk Tech Section */}
+      <div className="w-full flex flex-col items-center justify-center pr-6 pl-6 pb-6 md:pr-16 md:pl-16 md:pb-12 lg:pr-24 lg:pl-24 lg:pb-12 relative z-10">
+        <div className="flex items-center gap-4 md:gap-6 mb-8 md:mb-12 w-full max-w-4xl">
+          <div className="flex-1 h-1" style={{ background: 'linear-gradient(to right, transparent, #6bff6b)' }} />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center">Let's Talk Tech!</h2>
+          <div className="flex-1 h-1" style={{ background: 'linear-gradient(to left, transparent, #6bff6b)' }} />
         </div>
+        <p className="text-base md:text-lg lg:text-xl text-center max-w-3xl mb-8 md:mb-10" style={{ color: '#EAF2FF' }}>
+          I'm always learning and sharing ideas. If you want to chat about web development, projects, or technology in general, send me a message.
+        </p>
+        <button
+          onClick={() => onMenuClick?.("contact")}
+          className="inline-block px-8 py-3 md:px-10 md:py-4 lg:px-12 lg:py-5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 text-base md:text-lg lg:text-xl"
+          style={{ 
+            border: '2px solid #6bff6b',
+            backgroundColor: 'transparent',
+            color: '#6bff6b'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#6bff6b';
+            e.currentTarget.style.color = '#0d1324';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'transparent';
+            e.currentTarget.style.color = '#6bff6b';
+          }}
+        >
+          Contact Me
+        </button>
       </div>
     </div>
   );
