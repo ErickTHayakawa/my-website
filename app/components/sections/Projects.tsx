@@ -1,5 +1,3 @@
-import ParticleBackground from "../effects/ParticleBackground";
-
 export default function Projects() {
   return (
     <div
@@ -9,7 +7,6 @@ export default function Projects() {
         color: '#EAF2FF'
       }}
     >
-      <ParticleBackground color="168, 85, 247" />
       <div className="relative z-10">
         <h2 className="text-4xl font-semibold mb-4" style={{ color: '#EAF2FF' }}>
           Projects

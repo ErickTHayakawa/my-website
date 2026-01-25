@@ -7,13 +7,14 @@ import About from "./components/sections/About";
 import Projects from "./components/sections/Projects";
 import Experiences from "./components/sections/Experiences";
 import Contact from "./components/sections/Contact";
+import ParticleBackground from "./components/effects/ParticleBackground";
 
 const sections = [
-  { id: "home", component: HomeSection },
-  { id: "about", component: About },
-  { id: "experiences", component: Experiences },
-  { id: "projects", component: Projects },
-  { id: "contact", component: Contact },
+  { id: "home", component: HomeSection, particleColor: "107, 255, 107" },
+  { id: "about", component: About, particleColor: "255, 255, 0" },
+  { id: "experiences", component: Experiences, particleColor: "255, 29, 206" },
+  { id: "projects", component: Projects, particleColor: "168, 85, 247" },
+  { id: "contact", component: Contact, particleColor: "59, 130, 246" },
 ];
 
 export default function Home() {
@@ -42,6 +43,7 @@ export default function Home() {
 
   return (
     <div className="h-screen overflow-hidden font-sans" style={{ background: 'linear-gradient(180deg, #070A12 0%, #0D1324 100%)' }}>
+      <ParticleBackground color={sections[currentIndex].particleColor} />
       <TopBar onMenuClick={handleMenuClick} activeSection={sections[currentIndex].id} />
       
       <div
