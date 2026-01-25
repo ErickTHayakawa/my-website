@@ -3,7 +3,7 @@ import Card from "../ui/Card";
 export default function About() {
   return (
     <div
-      className="w-full min-h-screen flex flex-col items-center justify-center p-8 pt-16 relative overflow-hidden"
+      className="w-full h-full flex flex-col items-center px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pt-28 pb-16 relative overflow-y-auto"
       style={{
         background: 'transparent',
         color: '#EAF2FF'
@@ -17,19 +17,19 @@ export default function About() {
           color: '#EAF2FF'
         }}
       />
-      <div className="w-full flex items-start justify-center gap-8 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-8 sm:py-12 md:py-16 lg:py-20 relative z-10 max-w-7xl mx-auto">
-        <div className="flex-1 space-y-6">
-          <div className="flex items-center gap-4 md:gap-6 mb-10">
+      <div className="w-full flex flex-col md:flex-row items-start justify-center gap-6 md:gap-8 relative z-10 max-w-7xl mx-auto">
+        <div className="flex-1 space-y-4 sm:space-y-6">
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-6 mb-6 sm:mb-8 md:mb-10">
             <div className="flex-1 h-[2px]" style={{ background: 'linear-gradient(to right, transparent, #ffeb3b99)' }} />
             <h2 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-center whitespace-nowrap"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center whitespace-nowrap"
             >
               About Me
             </h2>
             <div className="flex-1 h-[2px]" style={{ background: 'linear-gradient(to left, transparent, #ffeb3b99)' }} />
           </div>
           <div 
-            className="text-xl md:text-2xl mb-6 p-6 rounded-lg backdrop-blur-sm"
+            className="text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 p-4 sm:p-6 rounded-lg backdrop-blur-sm"
             style={{ 
               color: '#E0E7FF',
               background: 'linear-gradient(135deg, #ffeb3b0d, #6366f10d)',
@@ -39,7 +39,7 @@ export default function About() {
           >
             Full-Stack Developer focused on building modern web applications and solving real problems with clean code.
           </div>
-          <div className="space-y-5 text-lg leading-relaxed" style={{ color: '#D1D9E8' }}>
+          <div className="space-y-3 sm:space-y-4 md:space-y-5 text-base sm:text-lg leading-relaxed" style={{ color: '#D1D9E8' }}>
             <p>
               Hello! I'm Erick Hayakawa, a <span style={{ color: '#ffeb3b' }}>Full-Stack Developer</span> with <span style={{ color: '#ffeb3b' }}> 5 years of experience</span> working in technology companies. I've worked across the entire <span style={{ color: '#ffeb3b' }}>project lifecycle</span>, from development to deployment and client support sistem. Always focused on <span style={{ color: '#ffeb3b' }}>code quality</span> and <span style={{ color: '#ffeb3b' }}>continuous improvement</span>.
             </p>
@@ -51,7 +51,7 @@ export default function About() {
             </p>
           </div>
         </div>
-        <div className="w-full md:w-96 flex-shrink-0 space-y-6">
+        <div className="w-full md:w-96 flex-shrink-0 space-y-4 sm:space-y-6">
           <div>
             <Card 
               title="Main Technologies"

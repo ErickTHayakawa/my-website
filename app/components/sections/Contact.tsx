@@ -1,7 +1,7 @@
 export default function Contact() {
   return (
     <div
-      className="w-full h-full flex flex-col items-center justify-center p-8 pt-16 relative"
+      className="w-full h-full flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-12 pt-28 pb-16 relative overflow-y-auto"
       style={{
         background: 'linear-gradient(135deg, #3b82f615 0%, transparent 50%), linear-gradient(315deg, #3b82f615 0%, transparent 50%), #0d1324b3',
         color: '#EAF2FF'
@@ -9,17 +9,17 @@ export default function Contact() {
     >
       <div className="relative z-10 max-w-4xl w-full">
         {/* Title and Subtitle */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#EAF2FF' }}>
+        <div className="text-center mb-6 sm:mb-8 md:mb-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4" style={{ color: '#EAF2FF' }}>
             Get In Touch
           </h2>
-          <p className="text-xl md:text-2xl" style={{ color: '#3b82f6' }}>
+          <p className="text-lg sm:text-xl md:text-2xl" style={{ color: '#3b82f6' }}>
             Let's connect and discuss opportunities
           </p>
         </div>
 
         {/* Contact Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {/* Email */}
           <a
             href="mailto:hayakawa0508@gmail.com"
