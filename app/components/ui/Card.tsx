@@ -37,7 +37,7 @@ export default function Card({ title, company, date, description, color = '#6bff
   
   return (
     <div 
-      className={`rounded-lg border transition-all duration-300 hover:scale-105 ${
+      className={`rounded-lg border ${
         isLarge ? 'p-6 md:p-8' : 'p-3'
       }`}
       style={{
@@ -74,7 +74,7 @@ export default function Card({ title, company, date, description, color = '#6bff
             {items.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-row items-center justify-center gap-2 p-3 rounded-lg border transition-all duration-200 hover:scale-105 hover:shadow-lg"
+                className="flex flex-row items-center justify-center gap-2 p-3 rounded-lg border"
                 style={{
                   backgroundColor: `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, 0.1)`,
                   borderColor: `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, 0.3)`,

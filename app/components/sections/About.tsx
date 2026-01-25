@@ -13,27 +13,28 @@ export default function About() {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          background: 'linear-gradient(135deg, rgba(255, 235, 59, 0.08) 0%, transparent 50%), linear-gradient(315deg, rgba(99, 102, 241, 0.05) 0%, transparent 50%), radial-gradient(ellipse at top, rgba(99, 102, 241, 0.1), transparent 50%)'
+          background: 'linear-gradient(135deg, #ffeb3b14 0%, transparent 50%), linear-gradient(315deg, #ffeb3b14 0%, transparent 50%), #0d1324b3',
+          color: '#EAF2FF'
         }}
       />
       <div className="w-full flex items-start justify-center gap-8 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-8 sm:py-12 md:py-16 lg:py-20 relative z-10 max-w-7xl mx-auto">
         <div className="flex-1 space-y-6">
           <div className="flex items-center gap-4 md:gap-6 mb-10">
-            <div className="flex-1 h-[2px]" style={{ background: 'linear-gradient(to right, transparent, rgba(255, 235, 59, 0.6))' }} />
+            <div className="flex-1 h-[2px]" style={{ background: 'linear-gradient(to right, transparent, #ffeb3b99)' }} />
             <h2 
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-center whitespace-nowrap"
             >
               About Me
             </h2>
-            <div className="flex-1 h-[2px]" style={{ background: 'linear-gradient(to left, transparent, rgba(255, 235, 59, 0.6))' }} />
+            <div className="flex-1 h-[2px]" style={{ background: 'linear-gradient(to left, transparent, #ffeb3b99)' }} />
           </div>
           <div 
             className="text-xl md:text-2xl mb-6 p-6 rounded-lg backdrop-blur-sm"
             style={{ 
               color: '#E0E7FF',
-              background: 'linear-gradient(135deg, rgba(255, 235, 59, 0.05), rgba(99, 102, 241, 0.05))',
+              background: 'linear-gradient(135deg, #ffeb3b0d, #6366f10d)',
               borderLeft: '4px solid #ffeb3b',
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)'
+              boxShadow: '0 4px 20px #0000004d'
             }}
           >
             Full-Stack Developer focused on building modern web applications and solving real problems with clean code.
@@ -51,7 +52,7 @@ export default function About() {
           </div>
         </div>
         <div className="w-full md:w-96 flex-shrink-0 space-y-6">
-          <div className="transform transition-all hover:scale-105">
+          <div>
             <Card 
               title="Main Technologies"
               color="#ffeb3b"
@@ -93,7 +94,7 @@ export default function About() {
             />
           </div>
 
-          <div className="transform transition-all hover:scale-105">
+          <div>
             <Card 
               title="What I Do"
               color="#ffeb3b"

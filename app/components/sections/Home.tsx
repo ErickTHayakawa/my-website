@@ -58,7 +58,7 @@ export default function Home({ onMenuClick }: HomeProps) {
             </p>
             <button
               onClick={() => onMenuClick?.("about")}
-              className="inline-block px-6 py-2 sm:px-8 sm:py-3 md:px-10 md:py-4 lg:px-12 lg:py-5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 group text-sm sm:text-base md:text-lg lg:text-xl"
+              className="inline-block px-6 py-2 sm:px-8 sm:py-3 md:px-10 md:py-4 lg:px-12 lg:py-5 rounded-lg font-semibold group text-sm sm:text-base md:text-lg lg:text-xl"
               style={{ 
                 border: '2px solid #6bff6b',
                 backgroundColor: 'transparent',
@@ -168,7 +168,7 @@ export default function Home({ onMenuClick }: HomeProps) {
         </p>
         <button
           onClick={() => onMenuClick?.("contact")}
-          className="inline-block px-8 py-3 md:px-10 md:py-4 lg:px-12 lg:py-5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 text-base md:text-lg lg:text-xl"
+          className="inline-block px-8 py-3 md:px-10 md:py-4 lg:px-12 lg:py-5 rounded-lg font-semibold text-base md:text-lg lg:text-xl"
           style={{ 
             border: '2px solid #6bff6b',
             backgroundColor: 'transparent',
