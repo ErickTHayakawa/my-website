@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import Card from "../ui/Card";
+import { projects } from "@/app/data/projects";
 
 type HomeProps = {
   onMenuClick?: (section: string) => void;
@@ -120,29 +121,17 @@ export default function Home({ onMenuClick }: HomeProps) {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 max-w-8xl w-full">
-            <Card 
-              title="Robotics Team (FRC)"
-              company="Brazilian Storm"
-              description="Designed and built competition robots for the FIRST Robotics Competition (FRC). Contributed to programming and marketing, including video editing, uniform design, robot fairing, and software development."
-              size="large"
-              images={[
-                "/Brazilian-Storm.jpg",
-                "/Brazilian-Storm-2.jpg",
-                "/Brazilian-Storm-3.jpg",
-                "/Brazilian-Storm-4.jpg"
-              ]}
-            />
-            
-            <Card 
-              title="Pokemon Card Collector"
-              company="Personal Project"
-              description="An in-progress web + mobile app to manage a Pokémon card collection anywhere. Main feature: scan a card and identify the correct card and set, even when different sets share the same illustration."
-              size="large"
-              images={[
-                "/pokemon-image.png",
-              ]}
-              finished={false}
-            />
+            {projects.map((project) => (
+              <Card 
+                key={project.id}
+                title={project.title}
+                company={project.company}
+                description={project.description}
+                size="large"
+                images={project.images}
+                finished={project.finished}
+              />
+            ))}
           </div>
       </div>
 
