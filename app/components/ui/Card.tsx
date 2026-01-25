@@ -3,18 +3,25 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+type CardItem = {
+  icon: React.ReactNode;
+  text: string;
+};
+
 type CardProps = {
   title: string;
-  company: string;
+  company?: string;
   date?: string;
-  description: string;
+  description?: string;
   color?: string;
   size?: 'small' | 'large';
   images?: string[];
   finished?: boolean;
+  items?: CardItem[];
+  asList?: boolean;
 };
 
-export default function Card({ title, company, date, description, color = '#6bff6b', size = 'small', images, finished = true }: CardProps) {
+export default function Card({ title, company, date, description, color = '#6bff6b', size = 'small', images, finished = true, items, asList = false }: CardProps) {
   const isLarge = size === 'large';
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -34,16 +41,56 @@ export default function Card({ title, company, date, description, color = '#6bff
         isLarge ? 'p-6 md:p-8' : 'p-3'
       }`}
       style={{
-        backgroundColor: 'rgba(107, 255, 107, 0.05)',
-        borderColor: '#6bff6b50'
+        backgroundColor: `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, 0.05)`,
+        borderColor: color
       }}
     >
       <h3 className={isLarge ? "text-lg md:text-xl font-semibold" : "text-sm font-semibold"} style={{ color: color }}>{title}</h3>
-      <p className={isLarge ? "text-base md:text-lg font-medium mt-2" : "text-xs font-medium mt-1"} style={{ color: '#EAF2FF' }}>{company}</p>
+      {company && <p className={isLarge ? "text-base md:text-lg font-medium mt-2" : "text-xs font-medium mt-1"} style={{ color: '#EAF2FF' }}>{company}</p>}
       {date && <p className={isLarge ? "text-sm md:text-base mt-2" : "text-xs mt-1"} style={{ color: '#999' }}>{date}</p>}
-      <p className={isLarge ? "text-sm md:text-base mt-3" : "text-xs mt-2"} style={{ color: '#EAF2FF' }}>
-        {description}
-      </p>
+      {description && (
+        <p className={isLarge ? "text-sm md:text-base mt-3" : "text-xs mt-2"} style={{ color: '#EAF2FF' }}>
+          {description}
+        </p>
+      )}
+      {items && items.length > 0 && (
+        asList ? (
+          <ul className="mt-4 space-y-2 list-none">
+            {items.map((item, index) => (
+              <li
+                key={index}
+                className="text-sm md:text-base flex items-start gap-2"
+                style={{ color: '#EAF2FF' }}
+              >
+                <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor" style={{ color: color }}>
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span>{item.text}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="grid grid-cols-2 gap-3 mt-4">
+            {items.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-row items-center justify-center gap-2 p-3 rounded-lg border transition-all duration-200 hover:scale-105 hover:shadow-lg"
+                style={{
+                  backgroundColor: `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, 0.1)`,
+                  borderColor: `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, 0.3)`,
+                }}
+              >
+                <div style={{ color: color }}>
+                  {item.icon}
+                </div>
+                <p className="text-xs md:text-sm font-medium whitespace-nowrap" style={{ color: '#EAF2FF' }}>
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        )
+      )}
       {images && images.length > 0 && (
         <div className="relative w-full h-48 md:h-64 mt-4 rounded-lg overflow-hidden bg-black/20">
           <Image

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import ParticleBackground from "../effects/ParticleBackground";
 import { useState } from "react";
 import Card from "../ui/Card";
 
@@ -25,7 +24,6 @@ export default function Home({ onMenuClick }: HomeProps) {
         color: '#EAF2FF'
       }}
     >
-      <ParticleBackground />
       {/* Top Section - Full Page */}
       <div className="w-full flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-8 sm:py-12 md:py-16 lg:py-20 relative z-10 overflow-visible" style={{ minHeight: '75vh' }}>
         <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 md:gap-12 lg:gap-20 xl:gap-32 overflow-visible max-w-7xl">
@@ -54,9 +52,9 @@ export default function Home({ onMenuClick }: HomeProps) {
               Full Stack Developer
             </h3>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed mb-6 sm:mb-8 md:mb-10 lg:mb-12" style={{ color: '#EAF2FF' }}>
-              Building <span style={{ color: '#6bff6b' }}>clean</span>, <span style={{ color: '#6bff6b' }}>maintainable</span> web applications. From <span style={{ color: '#6bff6b' }}>Development</span> to <span style={{ color: '#6bff6b' }}>Deployment</span> and <span style={{ color: '#6bff6b' }}>Support</span>.
-              Focusing on delivering value through new <span style={{ color: '#6bff6b' }}>features</span>, <span style={{ color: '#6bff6b' }}>bug fixes</span>, and <span style={{ color: '#6bff6b' }}>reliable solutions</span>.
-              Always eager to learn and embrace <span style={{ color: '#6bff6b' }}>new challenges</span>!
+              Building clean, maintainable web applications. From Development to Deployment and Support.
+              Focusing on delivering value through new features, bug fixes, and reliable solutions.
+              Always eager to learn and embrace new challenges!
             </p>
             <button
               onClick={() => onMenuClick?.("about")}

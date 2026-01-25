@@ -1,5 +1,3 @@
-import ParticleBackground from "../effects/ParticleBackground";
-
 export default function Contact() {
   return (
     <div
@@ -9,7 +7,6 @@ export default function Contact() {
         color: '#EAF2FF'
       }}
     >
-      <ParticleBackground color="59, 130, 246" />
       <div className="relative z-10">
         <h2 className="text-4xl font-semibold mb-4" style={{ color: '#EAF2FF' }}>
           Contact
